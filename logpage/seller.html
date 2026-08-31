@@ -218,9 +218,9 @@
        function handleLogin(event) {
            event.preventDefault();
            var form = event.target;
-           var inputs = form.querySelectorAll("input");
-           var username = inputs[0].value.trim();
-           var password = inputs[1].value.trim();
+           var fields = form.querySelectorAll("input.input-field");
+           var username = fields[0].value.trim();
+           var password = fields[1].value.trim();
 
            if (!username || !password) {
                alert("Please enter both username and password.");
