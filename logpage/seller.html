@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="log.css">
+    <title>Contrafarm | Login & Registration</title>
+    <style>
+        /* Hide scrollbar for all browsers */
+        .form-box, .login-container, .register-container {
+            overflow-y: auto;
+            max-height: 80vh; /* Adjust height to make it scrollable */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .form-box::-webkit-scrollbar,
+        .login-container::-webkit-scrollbar,
+        .register-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Smooth scroll for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>CONTRAFARM</p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul></ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+
+        <!----------------------------- Form box ----------------------------------->    
+        <div class="form-box">
+            
+            <!------------------- login form -------------------------->
+
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                    <header>Login as a seller</header>
+                </div>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Username or Email" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                    
+                            <input type="submit" class="submit" value="Sign In">
+                        
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="login-check">
+                            <label for="login-check"> Remember Me</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Forgot password?</a></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!------------------- registration form -------------------------->
+
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                    <header>Sign Up as a seller</header>
+                </div>
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Firstname" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Lastname" required>
+                            <i class="bx bx-user"></i>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" class="input-field" placeholder="Email" required>
+                        <i class="bx bx-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password" required>
+                        <i class="bx bx-lock-alt"></i>
+                    </div>
+
+                    <!-- Location Input -->
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Location" required>
+                        <i class="bx bx-map"></i>
+                    </div>
+
+                    <!-- Payment Details Section -->
+                    <div class="payment-details">
+                        <h3>Payment Details</h3>
+                        <div class="payment-method">
+                            <input type="radio" id="gst" name="payment-method" value="GST" onclick="togglePaymentDetails()">
+                            <label for="gst">GST No</label>
+
+                            <input type="radio" id="upi" name="payment-method" value="UPI" onclick="togglePaymentDetails()">
+                            <label for="upi">UPI ID</label>
+
+                            <input type="radio" id="ifsc" name="payment-method" value="IFSC" onclick="togglePaymentDetails()">
+                            <label for="ifsc">IFSC Code</label>
+                        </div>
+
+                        <!-- GST Input -->
+                        <div id="gst-details" class="payment-method-details" style="display:none;">
+                            <input type="text" class="input-field" placeholder="Enter GST No">
+                            <i class="bx bx-id-card"></i>
+                        </div>
+
+                        <!-- UPI ID Input -->
+                        <div id="upi-details" class="payment-method-details" style="display:none;">
+                            <input type="text" class="input-field" placeholder="Enter UPI ID">
+                            <i class="bx bx-credit-card-front"></i>
+                        </div>
+
+                        <!-- IFSC Code Input -->
+                        <div id="ifsc-details" class="payment-method-details" style="display:none;">
+                            <input type="text" class="input-field" placeholder="Enter IFSC Code">
+                            <i class="bx bx-credit-card"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Register">
+                    </div>
+                    <div class="two-col">
+                        <div class="one">
+                            <input type="checkbox" id="register-check">
+                            <label for="register-check"> Remember Me</label>
+                        </div>
+                        <div class="two">
+                            <label><a href="#">Terms & conditions</a></label>
+                        </div>
+                    </div>
+
+                    <!-- Sign In button at the bottom of the Sign Up form -->
+                    <div class="input-box">
+                        <button type="button" class="btn" onclick="login()">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>   
+
+    <script>
+       function myMenuFunction() {
+            var i = document.getElementById("navMenu");
+            i.className = i.className === "nav-menu" ? "nav-menu responsive" : "nav-menu";
+       }
+
+       var a = document.getElementById("loginBtn");
+       var b = document.getElementById("registerBtn");
+       var x = document.getElementById("login");
+       var y = document.getElementById("register");
+
+       function login() {
+            x.style.left = "4px";
+            y.style.right = "-520px";
+            a.classList.add("white-btn");
+            b.classList.remove("white-btn");
+            x.style.opacity = 1;
+            y.style.opacity = 0;
+        }
+
+       function register() {
+            x.style.left = "-510px";
+            y.style.right = "5px";
+            a.classList.remove("white-btn");
+            b.classList.add("white-btn");
+            x.style.opacity = 0;
+            y.style.opacity = 1;
+        }
+
+       function togglePaymentDetails() {
+           var gst = document.getElementById("gst-details");
+           var upi = document.getElementById("upi-details");
+           var ifsc = document.getElementById("ifsc-details");
+
+           gst.style.display = "none";
+           upi.style.display = "none";
+           ifsc.style.display = "none";
+
+           if (document.getElementById("gst").checked) gst.style.display = "block";
+           if (document.getElementById("upi").checked) upi.style.display = "block";
+           if (document.getElementById("ifsc").checked) ifsc.style.display = "block";
+       }
+
+       function handleLogin(event) {
+           event.preventDefault();
+           window.location.href = '../seller_home/Seller_page.html'; // Redirects to the next page
+       }
+
+       function handleRegister(event) {
+           event.preventDefault();
+           alert("Registration successful! Please log in.");
+           login(); // Switches back to login form after registration
+       }
+    </script>
+</body>
+</html> 

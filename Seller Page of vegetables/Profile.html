@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        header {
+            background-color: rgb(5, 80, 50);
+        }
+        .nav {
+            overflow: hidden;
+        }
+        .nav a {
+            float:right;
+            color: rgb(241, 243, 245);
+            text-align: center;
+            padding: 50px 60px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .nav a:hover {
+            color: white;
+            background-color: rgb(7, 152, 7);
+        }
+        .nav a.active {
+            background-color: rgb(7, 70, 7);
+            color: white;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .Container {
+            display:flex;
+            flex-direction: row;
+            justify-content: flex-start; /* Space between the containers */
+            
+        }
+        .profile-container,
+        .profile-container-1,
+        .profile-container-2 {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-top: 100px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .profile-image {
+            width: 50%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%;
+            display: block; /* Center the image */
+            margin: 0 auto; /* Center the image horizontally */
+        }
+        .profile-detail {
+            text-align: left; /* Aligns text to the left */
+            margin-bottom: 10px; /* Adds space below each detail */
+        }
+        .divider {
+            border: none; /* Removes default border */
+            height: 2px; /* Sets height of the line */
+            background-color: #ccc; /* Color of the line */
+            margin: 10px 0; /* Adds space above and below the line */
+        }
+        h2 {
+            text-align: center;
+        }
+        
+        .edit-button {
+            background-color: rgb(5, 80, 50); /* Same color as header */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block; /* Center it below the profile */
+            margin: 20px auto; /* Center horizontally with margin */
+        }
+
+        .edit-button:hover {
+            background-color: rgb(7, 152, 7); /* Darker shade on hover */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Centered vertically and horizontally */
+            padding: 20px;
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 80%; /* Could be more or less depending on screen size */
+        }
+
+        .close {
+          color:#aaa ;
+          float:right ;
+          font-size :28px ;
+          font-weight : bold ;
+          cursor:pointer ;
+          }
+
+          .close:hover,
+          .close :focus{
+              color:black ;
+              text-decoration:none ;
+              cursor:pointer ;
+          }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav">
+        <a href="/Contrafarm-mp-/seller_home/Seller_page.html">Home</a>
+        <a href="my-shop.html">My Shop</a>
+        <a href="Market_trend.html">Market Trend</a>
+        <a href="#Profile">Profile</a>
+        <a href="#Support">Support</a>
+    </div>
+</header>
+
+<div class="Container">
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <img src="profile_female.jpg" alt="Profile Image" class="profile-image"> <!-- Replace with actual image path -->
+       
+        <div class="profile-detail"><strong>Name:</strong> <span id="displayName">Farmer 1</span></div> <!-- Replace with actual name -->
+        <div class="profile-detail"><strong>Location:</strong> <span id="displayLocation">Mumbai, India</span></div> <!-- Replace with actual location -->
+    </div>
+
+    <div class="profile-container-1">
+        <div class="profile-detail"><strong>Email ID:</strong> <span id="displayEmail">Farmer1@example.com</span></div>
+        <hr class="divider">
+        <div class="profile-detail"><strong>Phone No:</strong> <span id="displayPhone">+91-987654</span></div>
+        <hr class="divider">
+        <div class="profile-detail"><strong>Contact Details:</strong> +91-98765</div>
+    </div>
+
+    <div class="profile-container-2">
+         <div class="profile-detail"><strong>UPI ID:</strong> Farmer1@upi</div> <!-- Replace with actual UPI ID -->
+         <hr class="divider">
+         <div class="profile-detail"><strong>GST No:</strong>123456789012</div> <!-- Replace with actual GST number -->
+         <hr class="divider">
+         <div class="profile-detail"><strong>IFSC Code:</strong> ABCD0123456</div> <!-- Replace with actual IFSC code -->
+         <hr class="divider">
+         <div class="profile-detail"><strong>Password:</strong> <input type="password" value="yourpassword" readonly></div> <!-- Replace with actual password -->
+    </div>
+
+    <!-- Edit Button -->
+    <button id="editBtn" class="edit-button">Edit Profile</button>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Edit Profile</h2>
+          <form id="editForm" onsubmit="return updateProfile(event);">
+              <label for="name">Name:</label>
+              <input type="text" id="name" value="Farmer 1">
+
+              <label for="location">Location:</label>
+              <input type="text" id="location" value="Mumbai, India">
+
+              <label for="email">Email ID:</label>
+              <input type="email" id="email" value="Farmer1@example.com">
+
+              <label for="phone">Phone No:</label>
+              <input type="text" id="phone" value="+91-987654">
+
+              <!-- Add other fields as necessary -->
+
+              <button type="submit">Save Changes</button>
+          </form>
+      </div>
+    </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("editModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("editBtn");
+
+// Get the span element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on the close (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Function to update profile information
+function updateProfile(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get values from input fields
+    var name = document.getElementById("name").value;
+    var location = document.getElementById("location").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+
+    // Update displayed profile information
+    document.getElementById("displayName").innerText = name;
+    document.getElementById("displayLocation").innerText = location;
+    document.getElementById("displayEmail").innerText = email;
+    document.getElementById("displayPhone").innerText = phone;
+
+    // Close modal after saving changes
+    modal.style.display = "none";
+
+    return false; // Prevent form submission
+}
+</script>
+
+</body>
+</html>s

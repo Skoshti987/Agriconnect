@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Trends - Vegetable Prices</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white; /* Light green background */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: rgb(5, 80, 50);
+        }
+        .nav {
+            overflow: hidden;
+        }
+        .nav a {
+            float:right;
+            color: rgb(241, 243, 245);
+            text-align: center;
+            padding: 50px 60px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .nav a:hover {
+            color: white;
+            background-color: rgb(7, 152, 7);
+        }
+        .nav a.active {
+            background-color: rgb(7, 70, 7);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #006400;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #66b266; /* Light green header */
+        }
+        td {
+            background-color: #f0fff0; /* Light background for cells */
+        }
+        .chart-container {
+            position: relative;
+            width: 700px; /* Set desired width */
+            height: 400px; /* Set desired height */
+            margin: auto; /* Center the chart */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="/Contrafarm-mp-/seller_home/Seller_page.html">Home</a>
+            <a href="my-shop.html">My Shop</a>
+            <a href="Market_trend.html">Market Trend</a>
+            <a href="Profile.html">Profile</a>
+            <a href="#Support">Support</a>
+            <link rel="First page.css" href="First page.css">
+        </div>
+    </header>
+
+    <h1>Vegetable Market Trends and Future Predictions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Vegetable</th>
+                <th>Current Price (per kg)</th>
+                <th>Last Month's Price (per kg)</th>
+                <th>Predicted Price Next Month (per kg)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tomato</td>
+                <td>₹70</td>
+                <td>₹80</td>
+                <td>₹75</td>
+            </tr>
+            <tr>
+                <td>Potato</td>
+                <td>₹50</td>
+                <td>₹60</td>
+                <td>₹50</td>
+            </tr>
+            <tr>
+                <td>Onion</td>
+                <td>₹60</td>
+                <td>₹50</td>
+                <td>₹55</td>
+            </tr>
+            <tr>
+                <td>Carrot</td>
+                <td>₹40</td>
+                <td>₹40</td>
+                <td>₹50</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Vegetable Price Analysis</h1>
+    <div class="chart-container">
+        <canvas id="vegetablePriceChart"></canvas>
+    </div>
+
+<script>
+    const vegetableData = {
+        labels: ['Tomatoes', 'Onions', 'Potatoes', 'Carrots', 'Cucumbers'],
+        datasets: [{
+            label: 'Vegetable Prices (in Rs)',
+            data: [80, 60, 50, 40, 30], // Replace with actual price data
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const ctx = document.getElementById('vegetablePriceChart').getContext('2d');
+    const vegetablePriceChart = new Chart(ctx,{
+        type: 'bar',
+        data: vegetableData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

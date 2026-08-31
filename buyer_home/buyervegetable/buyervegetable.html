@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrafarm Vegetables</title>
+  <link rel="stylesheet" href="buyervegetable.css">
+</head>
+<body>
+
+  <!-- Menu Bar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../../buyer_home/buyerHome.html">Home</a></li>
+        <li><a href="#">support</a></li>
+        <li><a href="../show_request_buyer/show_contract.html">Make Contract</a></li>
+      </ul>
+      <div class="cart">
+        <span>🛒</span>
+        <span id="cart-count">0</span>
+        <div id="cart-dropdown" class="cart-dropdown">
+          <h4>Cart</h4>
+          <ul id="cart-items">
+            <li>No items in the cart.</li>
+          </ul>
+          <button id="checkout-btn" onclick="openCheckoutWindow()" disabled>Proceed to Checkout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <section class="main-content">
+    <h1>Fresh Vegetables</h1>
+
+    <div class="vegetable-container">
+      <div class="vegetable-box">
+        <img src="tomato.jpg" alt="Tomato">
+        <h3>Tomato</h3>
+        <p>Price: ₹45(Kg)</p>
+        <p>Quantity: <input type="number" value="1" min="1" id="quantity-tomato"></p>
+        <button onclick="addToCart('Tomato', 45, 'quantity-tomato')">Add to Cart</button>
+      </div>
+      <div class="vegetable-box">
+        <img src="cucumber.jpg" alt="Cucumber">
+        <h3>Cucumber</h3>
+        <p>Price: ₹50(Kg)</p>
+        <p>Quantity: <input type="number" value="1" min="1" id="quantity-cucumber"></p>
+        <button onclick="addToCart('Cucumber', 50, 'quantity-cucumber')">Add to Cart</button>
+      </div>
+      <div class="vegetable-box">
+        <img src="carrot.jpg" alt="Carrot">
+        <h3>Carrot</h3>
+        <p>Price: ₹37(Kg)</p>
+        <p>Quantity: <input type="number" value="1" min="1" id="quantity-carrot"></p>
+        <button onclick="addToCart('Carrot', 37, 'quantity-carrot')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-content">
+      <h2>Checkout</h2>
+      <ul id="checkout-items"></ul>
+      <p>Total: ₹<span id="total-price">0.00</span></p>
+      <button id="make-contract-btn" onclick="makeContract()">finalize request</button>
+    </div>
+  </div>
+
+  <script src="buyervegetable.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="First page.css" href="First page.css">
+        <style>
+            
+            header {
+            background-color: rgb(5, 80, 50);
+        }
+        .nav {
+            overflow: hidden;
+        }
+        .nav a {
+            float:right;
+            color: rgb(241, 243, 245);
+            text-align: center;
+            padding: 50px 60px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .nav a:hover {
+            color: white;
+            background-color: rgb(7, 152, 7);
+        }
+        .nav a.active {
+            background-color: rgb(7, 70, 7);
+            color: white;
+        }
+
+        body {
+            text-align: center;
+            justify-content: left;
+        }
+       
+        .search-box {
+    width: 1200px; /* Adjust the width as needed */
+    padding: 10px; /* Optional: adds space inside the box */
+    font-size: 16px; /* Optional: increases text size */
+    border: 1px solid #ccc; /* Optional: adds a border */
+    border-radius: 14px; /* Optional: rounds the corners */
+    text-align: center;
+    display: block;
+    margin-left: 150px;
+}
+
+       
+        
+
+            .vegetable-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center items */
+            margin-top: 20px;
+        }
+
+        .item {
+            border: 1px solid #dddddd;
+            margin: 10px; /* Space between items */
+            border-radius: 15px;
+            padding: 15px;
+            width: 250px; /* Fixed width for items */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: rgb(5, 80, 50);
+           display:flex;
+           justify-content: space_between;
+           align-items: center;
+           padding: 20px;
+            .nav2 {
+            overflow: hidden;
+        }
+        .nav2 a {
+           
+            color: rgb(241, 243, 245);
+           flex-direction: column;
+            display: flex;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .nav2right a{
+            color: rgb(241, 243, 245);
+           
+            display: flex;
+            justify-content: flex-end;
+            align-items:center;
+            text-decoration: none;
+            font-size: 20px;
+          
+        }
+
+        /* Include your custom styles here */
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border-radius: 8px;
+        }
+        .product h4 {
+            font-size: 1.2em;
+        }
+        #total-earnings {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        
+    }
+</style>
+
+
+    
+    </head>
+   
+    <body>
+        <header>
+            <div class="nav">
+                <a href="/Contrafarm-mp-/seller_home/Seller_page.html">Home</a>
+                <a href="../seller_home/seller_shope/seller_shope/myshop.html">My Shop</a>
+                <a href="Market_trend.html">Market Trend</a>
+                <a href="Profile.html">Profile</a>
+                <a href="../contact_us/contact.html">Support</a>
+                <link rel="First page.css" href="First page.css">
+            </div>
+        </header>
+        <div class="vegetables">
+        <h1 class="left">Search vegetables</h1>
+    
+        <input type="text" class=search-box id="searchBar" placeholder="Search for vegetables...." onkeyup="filterVegetables()">
+
+    <div class="vegetable-list">
+
+            <div class="item">
+                <h1>Carrot</h1>
+                <img src="Carrot.jpg" width="200" height="200">
+                <br>
+                <form id="add-product-form">
+
+                    <label for="price">Price (Rupees):</label>
+                <input type="number" id="price" step="1" required>
+                <br>
+
+                <label for="quantity">Quantity(Kg):</label>
+                <input type="number" id="quantity" required>
+                <br>
+
+                <button type="submit">Add Vegetable</button>
+                
+                </form>
+                
+            </div>
+                
+                
+                
+                <div class="item">
+                <h1>Tomato</h1>
+                <img src="Tomato.jpg" width="200" height="200">
+                <br>
+                <form id="add-product-form">
+
+                    
+                    <label for="price">Price (Rupees):</label>
+                <input type="number" id="price" step="1" required>
+                <br>
+
+                <label for="quantity">Quantity(Kg):</label>
+                <input type="number" id="quantity" required>
+                <br>
+
+                <button type="submit">Add Vegetable</button>
+                
+                </form>
+            </div>
+                <div class="item">
+                <h1>Cucumber</h1>
+                <img src="Cucumber.jpg" width="200" height="200">
+                <br>
+                <form id="add-product-form">
+
+                    
+                    <label for="price">Price (Rupees):</label>
+                <input type="number" id="price" step="1" required>
+                <br>
+
+                <label for="quantity">Quantity(Kg):</label>
+                <input type="number" id="quantity" required>
+                <br>
+
+                <button type="submit">Add Vegetable</button>
+                
+                </form>
+            </div>
+                <div class="item">
+                <h1>Bell Pepper</h1>
+                <img src="Bell Pepper.jpg" width="200" height="200">
+                <br>
+                <form id="add-product-form">
+
+                    
+                    <label for="price">Price (Rupees):</label>
+                <input type="number" id="price" step="1" required>
+                <br>
+
+                <label for="quantity">Quantity(Kg):</label>
+                <input type="number" id="quantity" required>
+                <br>
+
+                <button type="submit">Add Vegetable</button>
+                
+                </form>
+            </div>
+
+        
+        <div class="item">
+        <h1>Brinjal</h1>
+        <img src="Brinjal.jpg" width="200" height="200">
+        <br>
+        <form id="add-product-form">
+
+            
+            <label for="price">Price (Rupees):</label>
+        <input type="number" id="price" step="1" required>
+        <br>
+
+        <label for="quantity">Quantity(Kg):</label>
+        <input type="number" id="quantity" required>
+        <br>
+
+        <button type="submit">Add Vegetable</button>
+        
+        </form>
+        </div>
+
+        <div class="item">
+            <h1>Okra</h1>
+            <img src="Okra.jpg" width="200" height="200">
+            <br>
+            <form id="add-product-form">
+    
+
+                <label for="price">Price (Rupees):</label>
+            <input type="number" id="price" step="1" required>
+            <br>
+    
+            <label for="quantity">Quantity(Kg):</label>
+            <input type="number" id="quantity" required>
+            <br>
+    
+            <button type="submit">Add Vegetable</button>
+            
+            </form>
+            </div>
+
+            <div class="item">
+                <h1>Red bell pepper</h1>
+                <img src="red bell pepper.jpeg" width="200" height="200">
+                <br>
+                <form id="add-product-form">
+        
+                    <label for="price">Price (Rupees):</label>
+                <input type="number" id="price" step="1" required>
+                <br>
+        
+                <label for="quantity">Quantity(Kg):</label>
+                <input type="number" id="quantity" required>
+                <br>
+        
+                <button type="submit">Add Vegetable</button>
+                
+                </form>
+                </div>
+
+                <div class="item">
+                    <h1>Pumpkin</h1>
+                    <img src="Pumpkin.jpg" width="200" height="200">
+                    <br>
+                    <form id="add-product-form">
+            
+                        
+                        <label for="price">Price (Rupees):</label>
+                    <input type="number" id="price" step="1" required>
+                    <br>
+            
+                    <label for="quantity">Quantity(Kg):</label>
+                    <input type="number" id="quantity" required>
+                    <br>
+            
+                    <button type="submit">Add Vegetable</button>
+                    
+                    </form>
+                    </div>
+
+                    <div class="item">
+                        <h1>Ginger</h1>
+                        <img src="Ginger.jpg" width="200" height="200">
+                        <br>
+                        <form id="add-product-form">
+                
+
+                            <label for="price">Price (Rupees):</label>
+                        <input type="number" id="price" step="1" required>
+                        <br>
+                
+                        <label for="quantity">Quantity(Kg):</label>
+                        <input type="number" id="quantity" required>
+                        <br>
+                
+                        <button type="submit">Add Vegetable</button>
+                        
+                        </form>
+                        </div>
+
+                        <div class="item">
+                            <h1>yellow bell pepper</h1>
+                            <img src="yellow bell pepper.jpeg" width="200" height="200">
+                            <br>
+                            <form id="add-product-form">
+                    
+                                
+                                <label for="price">Price (Rupees):</label>
+                            <input type="number" id="price" step="1" required>
+                            <br>
+                    
+                            <label for="quantity">Quantity(Kg):</label>
+                            <input type="number" id="quantity" required>
+                            <br>
+                    
+                            <button type="submit">Add Vegetable</button>
+                            
+                            </form>
+                            </div>
+                            
+                            <div class="item">
+                                <h1>white onion</h1>
+                                <img src="white onion.jpg" width="200" height="200">
+                                <br>
+                                <form id="add-product-form">
+                        
+                                    
+                                    <label for="price">Price (Rupees):</label>
+                                <input type="number" id="price" step="1" required>
+                                <br>
+                        
+                                <label for="quantity">Quantity(Kg):</label>
+                                <input type="number" id="quantity" required>
+                                <br>
+                        
+                                <button type="submit">Add Vegetable</button>
+                                
+                                </form>
+                                </div>
+          </div>
+       
+          <button><a href="/Contrafarm-mp-/contracts/seller_contract.html" >View Contract</a></button>
+            <h3 class="right">Your Listed Vegetables</h3>
+            <div id="seller-products"></div>
+       
+     
+       
+       
+        
+            
+        
+        <script src="FirstPage.js" async defer></script>
+    </div>
+    </body>
+    <footer>
+        <div class="nav2">
+        <a href="#Fee and pricing">Fee and pricing</a>
+        <br>
+        <a href="#Offers for sellers">Offers for sellers</a>
+        <br>
+        <a href="#Sell Globally">Sell Globally</a>
+        <br>
+        <a href="#Grow your business">Grow your business</a>
+        <br>
+    </div>  
+        <div class="nav2right">
+        <a href="#Reach us">Reach us</a>
+        <br>
+        <a href="#Instagram">Instagram</a>
+        <br>
+        <a href="#Facebook">Facebook</a>
+        <br>
+        <a href="#Youtube">Youtube</a>
+        <br>
+        <a href="#Linkedin">Linkedin</a>
+        <br>
+        <a href="#Help">Help</a>
+    </div>
+   
+    </footer>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="Home page-Main/HomePage.css">
+    <!-- Meta Description -->
+    <meta name="description" content="A brief description of the page for SEO.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Madimi+One&family=Noto+Sans+JP:wght@100..900&family=Sixtyfour&family=Song+Myung&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .third {
+            display: flex; /* Align text and image side by side */
+            justify-content: space-between; /* Space out the content evenly */
+            align-items: center; /* Center-align the items vertically */
+            padding: 50px;
+            color: white;
+            background-color: black;
+        }
+        .third .text-content {
+            flex: 1; /* The text will take up available space */
+            padding-right: 10px; /* Space between text and image */
+            text-align: left;
+        }
+        .third .image-frame {
+            width: 25%; /* Set the image frame to occupy 40% of the container's width */
+            height: auto;
+        }
+        .third .image-frame img {
+            width: 100%; /* Make the image fill the container */
+            height: auto; /* Maintain the aspect ratio */
+            object-fit: cover; /* Ensure the image covers the frame without stretching */
+            border-radius: 10px; /* Optional: add rounded corners to the image */
+        }
+        .third p, .third h2 {
+            color: white;
+            margin: 10px 0; /* Adjust spacing between paragraphs and headings */
+        }
+        .third button {
+            font-size: 20px;
+            border-radius: 7px;
+            background-color: white;
+            color: rgb(52, 7, 7);
+            padding: 10px 20px; /* Add padding to the button */
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+     <div class="First">
+    <header>
+     <ul>
+        <li><a href ="login.html">REQUEST DEMO</a></li>
+        <li><a href ="logpage/seller.html">login as seller</a></li>
+        <li><a href ="logpage/buyer.html">login as buyer</a></li>
+       </action>
+     </ul>
+    </header>
+    <!-- Main Content Section -->
+    <main>
+        <h1>Welcome to ContraFarm</h1>
+        <p>Your Crop,Your Legacy,Our Responsibility....</p>
+        <section>
+            <form action="login.php" method="POST">
+        <a href="logpage/seller.html" style="text-decoration: none;">
+        <button class="fill-button">Login as seller</button>
+        </a>
+        <a href="logpage/buyer.html" style="text-decoration: none;">
+        <button class="fill-button">Login as buyer</button>
+        </a>
+    </form>
+        </section>
+    </main>
+</div>
+<!--Features section-->
+<div class="second">
+    <p>Features</p>
+    <ul class="list-container">
+    <li class="left-align"><i class="fa-solid fa-truck"></i><span>Smart Supply</span> </li>
+    <li class="left-align"><i class="fa-solid fa-handshake"></i> Reliable</li>
+    <li class="left-align"><i class="fa-solid fa-shield"></i> Trustworthy</li>
+    <li class="right-align"><i class="fa-solid fa-comments-dollar"></i> Best Price</li>
+    <li class="right-align"><i class="fa-solid fa-globe"></i> Globally Recognised</li>
+</ul>
+</div>
+<!--Guide book-->
+<div class="third">
+    <div class="text-content">
+        <p>Benefits</p>
+        <p>Awesome Word about ContraFarm</p>
+        <p>We help farmers get the best price for their veggies....</p>
+        <button>Explore more</button>
+        <h2>ContraFarm is a specialized e-commerce platform where farmers can sell fresh fruits,</h2> 
+        <h2>vegetables, and other produce directly 
+        to customers. Designed for ease and flexibility, it </h2>
+        <h2>supports direct negotiations between farmers and buyers, providing a more personalized </h2>
+        <h2>and profitable selling experience.</h2>
+    </div>
+    <div class="image-frame">
+        <img src="Home page-Main/farmer.jpg" alt="ContraFarm Image">
+    </div>
+</div>
+    <!-- Main Content of the Page -->
+    <div class="wrapper">
+        <h1>Blogs</h1>
+        <div class="container">
+            <input type="radio" name="slide" id="c1" checked>
+             <label for="c1" class="card">
+                <div class="row">
+                    <div class="icon">1</div>
+                    <div class="description">
+                    <h4>Understanding Your Soil: The Foundation of Farming</h4>
+                    <p>Everything in farming starts with the soil. Healthy soil is the key to productive crops and livestock.</p>
+                        <div class="content"> 
+                            <p>To ensure that your farm’s soil is in optimal condition, consider these basic principles:
+
+                        Soil Testing: Before you plant, get your soil tested. A soil test reveals the pH, nutrient levels (nitrogen, phosphorus, potassium), and organic matter content of your soil. This allows you to tailor your soil amendments (fertilizers, compost, lime, etc.) to meet your soil’s specific needs.
+                        
+                        Soil Structure: Healthy soil should have good structure, meaning it can drain well yet hold moisture for plant roots. Incorporate organic matter, such as compost or cover crops, to improve the soil’s texture and nutrient-holding capacity.
+                        Avoid Over-Tilling: Over-tilling can damage the soil structure, reduce organic matter, and lead to soil erosion. Consider no-till or low-till methods, which help preserve soil health and moisture.
+                    </p>
+                    </div>   
+                </div>
+                <label for="c1">Read more</label>
+                </div>
+             </label>
+             <!-- Main Content of the Page -->
+            <input type="radio" name="slide" id="c2" checked>
+             <label for="c2" class="card">
+                <div class="row">
+                    <div class="icon">2</div>
+                    <div class="description">
+                    <h4>Crop Rotation and Companion Planting</h4>
+                    <p>Winter has so much to offer - creative activities</p>
+                </div>
+                </div>
+             </label>
+                    <input type="radio" name="slide" id="c3" checked>
+                     <label for="c3" class="card">
+                        <div class="row">
+                            <div class="icon">3</div>
+                            <div class="description">
+                            <h4>Practice Water Conservation</h4>
+                            <p>Winter has so much to offer - creative activities</p>
+                        </div>
+                        </div>
+                     </label>
+                    <input type="radio" name="slide" id="c4" checked>
+                     <label for="c4" class="card">
+                        <div class="row">
+                            <div class="icon">4</div>
+                            <div class="description">
+                            <h4>Use Integrated Pest Management (IPM)</h4>
+                            <p>Winter has so much to offer - creative activities</p>
+                        </div>
+                        </div>
+                     </label>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="fifth">
+        <footer>
+          <div class="text-container">
+            <p>Contacts</p>
+            <h1>GET IN TOUCH WITH US</h1>
+            <h2>Have any doubts or suggestions you can contact</h2>
+            <h2>us at any time at the below details.</h2>
+            <h2>We will be very pleased to resolve your query and to</h2>
+            <h2>know your suggestions</h2>
+            <h3>LOCATION</h3>
+            <h2>KIT library, digital library,</h2>
+            <h2>Gokul Shirgaon, Kolhapur</h2>
+            <h2>Pin-code: 45676345</h2>
+            <h3>PHONE</h3>
+            <h2>+91 76765</h2>
+            <h2>+91 23456</h2>
+            <h3>EMAIL</h3>
+            <h2>support@contrafarm.com</h2>
+            <section>
+              <button class="fill-button">Send Message</button>
+            </section>
+          </div>
+          <div class="image-frame">
+            <img src="Home page-Main/Map.jpg" alt="ContraFarm Image">
+          </div>
+</footer>
+      </div>
+    <!-- JavaScript File -->
+    <script src="Home page-Main/scripts.js"></script>
+</body>
+</html>
