@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My_shop</title>
+    <title>AgriConnect - My Shop & Analytics</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="../../../../js/app-engine.js"></script>
+    <script>
+      const seller = AgriConnect.requireAuth('seller');
+    </script>
 </head>
 
 <body>
@@ -17,69 +21,57 @@
             <ul>
                 <li>
                     <a href="#">
-                        <!-- <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
-                        </span> -->
-                        <span class="title">ContraFarm</span>
+                        <span class="title" style="font-size:22px; font-weight:bold; color:white;">AgriConnect</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../../Seller_page.html">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Home</span>
+                        <span class="title">Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../../../show_request/show_contract.html">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
-                        <span class="title">Customer's Request</span>
+                        <span class="title">Customer Requests</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../../../contracts/seller_contract.html">
                         <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
+                            <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Contracts</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../../../Seller Page of vegetables/Firstpage.html">
+                        <span class="icon">
+                            <ion-icon name="add-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../../../contact_us/contact.html">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
-                        <span class="title">Help</span>
+                        <span class="title">Support</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="#" onclick="AgriConnect.logout(); return false;">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -112,19 +104,19 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">1,111</div>
-                        <div class="cardName">Daily Views</div>
+                        <div class="numbers" id="stat-products">0</div>
+                        <div class="cardName">Active Products</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="basket-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="numbers" id="stat-requests">0</div>
+                        <div class="cardName">Pending Requests</div>
                     </div>
 
                     <div class="iconBx">
@@ -134,19 +126,19 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">284</div>
-                        <div class="cardName">Reviews</div>
+                        <div class="numbers" id="stat-contracts">0</div>
+                        <div class="cardName">Active Contracts</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <ion-icon name="document-text-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">7,842 lakhs</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers" id="stat-earnings">₹0.00</div>
+                        <div class="cardName">Total Contract Value</div>
                     </div>
 
                     <div class="iconBx">
@@ -159,76 +151,22 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>Recent Buyer Orders & Requests</h2>
+                        <a href="../../../show_request/show_contract.html" class="btn">View All</a>
                     </div>
 
                     <table>
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
+                                <td>Product Name</td>
+                                <td>Quantity</td>
+                                <td>Total Amount</td>
                                 <td>Status</td>
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>Potato</td>
-                                <td>1200 rupee</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Spnich</td>
-                                <td>110 rupee</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple</td>
-                                <td>1200 rupee</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Herbs</td>
-                                <td>620 rupee</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Tomato</td>
-                                <td>1200 rupee</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Mango</td>
-                                <td>5110 rupee</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Cabage</td>
-                                <td>200 rupee</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple</td>
-                                <td>2620 rupee</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                        <tbody id="shop-orders-tbody">
+                            <!-- Populated dynamically -->
                         </tbody>
                     </table>
                 </div>
@@ -236,81 +174,11 @@
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>Recent Customers</h2>
+                        <h2>Active Buyers</h2>
                     </div>
 
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>Kolhapur</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Raj <br> <span>Pune</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Sharvari <br> <span>Mumbai</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Avira <br> <span>Thane</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>Kolhapur</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Tanvi <br> <span>Goa</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Anuj <br> <span>Kalyan</span></h4>
-                            </td>
-                        </tr>
+                    <table id="shop-customers-table">
+                        <!-- Populated dynamically -->
                     </table>
                 </div>
             </div>
@@ -319,6 +187,81 @@
 
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          renderShopDashboard();
+      });
+
+      function renderShopDashboard() {
+          if (!seller) return;
+
+          const products = AgriConnect.getSellerProducts(seller.id);
+          const requests = AgriConnect.getSellerRequests(seller.id);
+          const contracts = AgriConnect.getUserContracts(seller.id, 'seller');
+
+          // 1. Stats
+          document.getElementById('stat-products').textContent = products.length;
+          
+          const pendingCount = requests.filter(r => r.status === 'PENDING').length;
+          document.getElementById('stat-requests').textContent = pendingCount;
+          
+          document.getElementById('stat-contracts').textContent = contracts.length;
+
+          let totalVal = contracts.reduce((sum, c) => sum + (c.totalPrice || 0), 0);
+          document.getElementById('stat-earnings').textContent = '₹' + totalVal.toFixed(2);
+
+          // 2. Orders table
+          const tbody = document.getElementById('shop-orders-tbody');
+          tbody.innerHTML = '';
+
+          if (requests.length === 0) {
+              tbody.innerHTML = '<tr><td colspan="4">No buyer requests received yet.</td></tr>';
+          } else {
+              requests.slice(0, 8).forEach(req => {
+                  const tr = document.createElement('tr');
+                  let statusClass = 'pending';
+                  if (req.status === 'ACCEPTED') statusClass = 'delivered';
+                  if (req.status === 'REJECTED') statusClass = 'return';
+
+                  tr.innerHTML = `
+                      <td>${req.productName}</td>
+                      <td>${req.quantity} ${req.unit || 'kg'}</td>
+                      <td>₹${req.totalPrice.toFixed(2)}</td>
+                      <td><span class="status ${statusClass}">${req.status}</span></td>
+                  `;
+                  tbody.appendChild(tr);
+              });
+          }
+
+          // 3. Active Buyers table
+          const custTable = document.getElementById('shop-customers-table');
+          custTable.innerHTML = '';
+
+          const uniqueBuyersMap = {};
+          requests.forEach(r => {
+              uniqueBuyersMap[r.buyerId] = r.buyerName;
+          });
+
+          const buyerNames = Object.values(uniqueBuyersMap);
+          if (buyerNames.length === 0) {
+              custTable.innerHTML = '<tr><td colspan="2">No active buyers yet.</td></tr>';
+          } else {
+              buyerNames.forEach(name => {
+                  const tr = document.createElement('tr');
+                  tr.innerHTML = `
+                      <td width="60px">
+                          <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt="user"></div>
+                      </td>
+                      <td>
+                          <h4>${name} <br> <span>Verified Buyer</span></h4>
+                      </td>
+                  `;
+                  custTable.appendChild(tr);
+              });
+          }
+      }
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
