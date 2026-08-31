@@ -1,57 +1,89 @@
-document.addEventListener('DOMContentLoaded', loadContractFromBuyer);
-document.getElementById('acceptContractButton').addEventListener('click', acceptContract);
+// Seller Contract Display & PDF Export
+const seller = AgriConnect.requireAuth('seller');
 
-function loadContractFromBuyer() {
-    const contractData = JSON.parse(localStorage.getItem("buyerContract"));
-    if (contractData) {
-        const contractDisplay = `
-            <h3>Contract Details</h3>
-            <p><strong>Buyer:</strong> ${contractData.buyerName}</p>
-            <p><strong>Seller:</strong> ${contractData.sellerName}</p>
-            <p><strong>Crop Category:</strong> ${contractData.cropCategory}</p>
-            <p><strong>Crop:</strong> ${contractData.amount} units of ${contractData.cropType}</p>
-            <p><strong>Price per Unit:</strong> ₹${contractData.price}</p>
-            <p><strong>Delivery Date:</strong> ${contractData.deliveryDate}</p>
-            <p><strong>Payment Due:</strong> ${contractData.paymentDue} days after delivery</p>
-            <p><strong>Contract Period:</strong> ${contractData.contractPeriod} ${contractData.periodUnit}</p>
+document.addEventListener('DOMContentLoaded', function() {
+    renderSellerContracts();
+});
+
+function renderSellerContracts() {
+    const container = document.getElementById('seller-contracts-list');
+    if (!container || !seller) return;
+
+    const contracts = AgriConnect.getUserContracts(seller.id, 'seller');
+    container.innerHTML = '';
+
+    if (contracts.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#666; font-size:16px;">No generated contracts found. Contracts are automatically created when you accept incoming buyer requests.</p>';
+        return;
+    }
+
+    contracts.forEach(cnt => {
+        const div = document.createElement('div');
+        div.style.cssText = 'border:2px solid #055032; border-radius:10px; padding:20px; margin-bottom:20px; background:#fff; box-shadow:0 3px 6px rgba(0,0,0,0.1); text-align:left;';
+
+        div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #ddd; padding-bottom:10px;">
+                <h3 style="margin:0; color:#055032;">Contract #${cnt.id}</h3>
+                <span style="background:#d4edda; color:#155724; padding:4px 12px; border-radius:12px; font-weight:bold; font-size:13px;">${cnt.status}</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; margin:15px 0;">
+                <div style="flex:1; min-width:200px;">
+                    <p><strong>Buyer:</strong> ${cnt.buyerName}</p>
+                    <p><strong>Seller:</strong> ${cnt.sellerName}</p>
+                    <p><strong>Product:</strong> ${cnt.productName}</p>
+                </div>
+                <div style="flex:1; min-width:200px;">
+                    <p><strong>Quantity:</strong> ${cnt.quantity} ${cnt.unit || 'kg'}</p>
+                    <p><strong>Price per Unit:</strong> ₹${cnt.pricePerUnit}</p>
+                    <p><strong>Total Amount:</strong> <span style="font-size:18px; color:#2e7d32; font-weight:bold;">₹${cnt.totalPrice.toFixed(2)}</span></p>
+                </div>
+            </div>
+            <p style="font-size:13px; color:#555; background:#f9f9f9; padding:10px; border-radius:5px;"><strong>Terms:</strong> ${cnt.terms}</p>
+            <p style="font-size:12px; color:#888;">Created Date: ${cnt.createdDate}</p>
+            <button onclick="downloadContractPDF('${cnt.id}')" style="background:#055032; color:white; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; margin-top:10px;">Download Official Contract (PDF)</button>
         `;
 
-        document.getElementById('contractDisplay').innerHTML = contractDisplay;
-        document.getElementById('acceptContractButton').style.display = 'inline-block';
-        document.getElementById('downloadContractSeller').style.display = 'inline-block'; // Show download button for seller
-    } else {
-        alert("No contract found from the buyer.");
-    }
+        container.appendChild(div);
+    });
 }
 
-function acceptContract() {
-    alert("You have accepted the contract.");
-    localStorage.setItem("contractAccepted", JSON.stringify(true));
-}
+function downloadContractPDF(contractId) {
+    const contracts = AgriConnect.getContracts();
+    const cnt = contracts.find(c => c.id === contractId);
+    if (!cnt) return;
 
-document.getElementById('downloadContractSeller').addEventListener('click', downloadContractAsPDFSeller);
-
-function downloadContractAsPDFSeller() {
-    const contractData = JSON.parse(localStorage.getItem("buyerContract"));
-    if (contractData) {
-        const { buyerName, sellerName, cropCategory, cropType, amount, price, deliveryDate, paymentDue, contractPeriod, periodUnit } = contractData;
-
+    if (window.jspdf) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
-        doc.text("Contract Details", 20, 10);
-        doc.text(`Buyer: ${buyerName}`, 20, 20);
-        doc.text(`Seller: ${sellerName}`, 20, 30);
-        doc.text(`Crop Category: ${cropCategory}`, 20, 40);
-        doc.text(`Crop Type: ${cropType}`, 20, 50);
-        doc.text(`Amount: ${amount} units`, 20, 60);
-        doc.text(`Price per Unit: $${price}`, 20, 70);
-        doc.text(`Delivery Date: ${deliveryDate}`, 20, 80);
-        doc.text(`Payment Due: ${paymentDue} days after delivery`, 20, 90);
-        doc.text(`Contract Period: ${contractPeriod} ${periodUnit}`, 20, 100);
+        doc.setFontSize(20);
+        doc.setTextColor(5, 80, 50);
+        doc.text("AgriConnect - Digital Purchase Agreement", 20, 20);
 
-        doc.save("contract.pdf");
+        doc.setFontSize(12);
+        doc.setTextColor(0, 0, 0);
+        doc.text(`Contract ID: ${cnt.id}`, 20, 35);
+        doc.text(`Date: ${cnt.createdDate}`, 20, 42);
+
+        doc.text("----------------------------------------------------------------------------------", 20, 48);
+
+        doc.text(`Seller Name: ${cnt.sellerName}`, 20, 60);
+        doc.text(`Buyer Name: ${cnt.buyerName}`, 20, 70);
+        doc.text(`Product Name: ${cnt.productName}`, 20, 80);
+        doc.text(`Quantity: ${cnt.quantity} ${cnt.unit || 'kg'}`, 20, 90);
+        doc.text(`Price per Unit: Rs. ${cnt.pricePerUnit}`, 20, 100);
+        doc.setFontSize(14);
+        doc.text(`Total Agreed Value: Rs. ${cnt.totalPrice.toFixed(2)}`, 20, 115);
+
+        doc.setFontSize(10);
+        doc.text("Terms & Conditions:", 20, 130);
+        doc.text(cnt.terms, 20, 138, { maxWidth: 170 });
+
+        doc.text("----------------------------------------------------------------------------------", 20, 160);
+        doc.text("Authorized by AgriConnect Digital Escrow & Contract Management System", 20, 170);
+
+        doc.save(`AgriConnect_Contract_${cnt.id}.pdf`);
     } else {
-        alert("No contract available to download.");
+        window.print();
     }
 }

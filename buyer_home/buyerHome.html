@@ -10,27 +10,28 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"/>
     <link rel="stylesheet" href="buyer_home.css"/>
-    <title>buyer_home</title>
+    <title>AgriConnect - Buyer Portal</title>
   </head>
   <body>
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#">Contrafarm</a>
+          <a href="../index.html">AgriConnect</a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="/Contrafarm-mp-/Home page-Main/HomePage.html">HOME</a></li>
-        <li><a href="/Contrafarm-mp-/Seller Page of vegetables/Profile.html">PROFILE</a></li>
-        <li><a href="/Contrafarm-mp-/contact_us/contact.html">CONTACT</a></li>
-        <li><a href="../show_request_buyer/show_contract.html">MAKE REQUESTS</a></li>
+        <li><a href="../index.html">HOME</a></li>
+        <li><a href="buyervegetable/buyervegetable.html">BROWSE PRODUCTS</a></li>
+        <li><a href="../show_request_buyer/show_contract.html">MY REQUESTS</a></li>
+        <li><a href="../contracts/buyer_contract.html">MY CONTRACTS</a></li>
+        <li><a href="../contact_us/contact.html">CONTACT</a></li>
+        <li><a href="#" onclick="AgriConnect.logout(); return false;" style="color:#ff6b6b;"><i class="ri-logout-box-r-line"></i> LOGOUT</a></li>
       </ul>
       <div class="nav__btns">
-        <button class="btn"><i class="ri-search-line"></i></button>
-        <button class="btn"><i class="ri-shopping-bag-line"></i></button>
+        <button class="btn" title="Search"><i class="ri-search-line"></i></button>
       </div>
     </nav>
     <div class="container">
@@ -160,6 +161,20 @@
     </div>
     
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../js/app-engine.js"></script>
+    <script>
+      // Auth Guard
+      const currentBuyer = AgriConnect.requireAuth('buyer');
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const buyBtn = document.querySelector('.container__btn .btn');
+        if (buyBtn) {
+          buyBtn.addEventListener('click', function() {
+            window.location.href = 'buyervegetable/buyervegetable.html';
+          });
+        }
+      });
+    </script>
     <script src="buyer_home.js"></script>
   </body>
 </html>

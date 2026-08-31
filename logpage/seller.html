@@ -171,6 +171,7 @@
         </div>
     </div>   
 
+    <script src="../js/app-engine.js"></script>
     <script>
        function myMenuFunction() {
             var i = document.getElementById("navMenu");
@@ -216,13 +217,63 @@
 
        function handleLogin(event) {
            event.preventDefault();
-           window.location.href = '../seller_home/Seller_page.html'; // Redirects to the next page
+           var form = event.target;
+           var inputs = form.querySelectorAll("input");
+           var username = inputs[0].value.trim();
+           var password = inputs[1].value.trim();
+
+           if (!username || !password) {
+               alert("Please enter both username and password.");
+               return;
+           }
+
+           var res = AgriConnect.loginUser(username, password, "seller");
+           if (res.success) {
+               window.location.href = "../seller_home/Seller_page.html";
+           } else {
+               alert(res.message);
+           }
        }
 
        function handleRegister(event) {
            event.preventDefault();
-           alert("Registration successful! Please log in.");
-           login(); // Switches back to login form after registration
+           var form = event.target;
+           var fields = form.querySelectorAll("input.input-field");
+           var fname = fields[0].value.trim();
+           var lname = fields[1].value.trim();
+           var email = fields[2].value.trim();
+           var password = fields[3].value.trim();
+           var location = fields[4].value.trim();
+
+           var selectedPay = document.querySelector("input[name='payment-method']:checked");
+           var payMethod = selectedPay ? selectedPay.value : "None";
+           var payDetail = "";
+           if (payMethod === "GST") payDetail = document.querySelector("#gst-details input").value.trim();
+           if (payMethod === "UPI") payDetail = document.querySelector("#upi-details input").value.trim();
+           if (payMethod === "IFSC") payDetail = document.querySelector("#ifsc-details input").value.trim();
+
+           if (!fname || !email || !password) {
+               alert("Please fill in all required fields.");
+               return;
+           }
+
+           var res = AgriConnect.registerUser({
+               username: email.split('@')[0],
+               email: email,
+               password: password,
+               role: "seller",
+               name: fname + " " + lname,
+               location: location,
+               paymentType: payMethod,
+               paymentDetail: payDetail
+           });
+
+           if (res.success) {
+               alert("Seller registration successful! Redirecting to seller dashboard...");
+               window.location.href = "../seller_home/Seller_page.html";
+           } else {
+               alert(res.message);
+           }
        }
     </script>
 </body>

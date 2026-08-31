@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Contract</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/app-engine.js"></script>
     <link rel="stylesheet" href="seller.css">
 </head>
 <body>
-     <!-- Back Button -->
-     <button onclick="history.back()" id="backButton">Back</button>
-     
-    <div class="contract-form">
-        <h2>Seller Contract - View Received Contract</h2>
-        <div id="contractDisplay" class="contract-preview"></div>
-        <button id="acceptContractButton" style="display: none;">Accept Contract</button>
-        <button id="downloadContractSeller" style="display: none;">Download Contract</button>
-    </div>
+     <div style="background:#055032; padding:15px 30px; display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="color:white; margin:0;">AgriConnect - Seller Contracts</h2>
+        <div>
+           <a href="../seller_home/Seller_page.html" style="color:white; text-decoration:none; margin-right:20px;">Dashboard</a>
+           <a href="../show_request/show_contract.html" style="color:white; text-decoration:none; margin-right:20px;">Requests</a>
+           <a href="#" onclick="AgriConnect.logout(); return false;" style="color:#ff6b6b; text-decoration:none;">Logout</a>
+        </div>
+     </div>
+
+     <div style="max-width:900px; margin:30px auto; padding:20px;">
+        <button onclick="history.back()" id="backButton" style="margin-bottom:20px; padding:8px 16px; cursor:pointer;">&larr; Back</button>
+        
+        <div class="contract-form">
+            <h2>Active Agricultural Purchase Contracts</h2>
+            <div id="seller-contracts-list" style="margin-top:20px;"></div>
+        </div>
+     </div>
 
     <script src="seller.js"></script>
 </body>

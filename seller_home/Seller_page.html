@@ -10,28 +10,28 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"/>
     <link rel="stylesheet" href="seller_page.css"/>
-    <title>Seller_home</title>
+    <title>AgriConnect - Seller Portal</title>
   </head>
   <body>
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <a href="#">Contrafarm</a>
+          <a href="../index.html">AgriConnect</a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="/Contrafarm-mp-/Home page-Main/HomePage.html">HOME</a></li>
-        <li><a href="/Contrafarm-mp-/Seller Page of vegetables/Profile.html">PROFILE</a></li>
-        <li><a href="/Contrafarm-mp-/contact_us/contact.html">CONTACT</a></li>
-        <li><a href="/Contrafarm-mp-/show_request/show_contract.html">SHOW REQUESTS</a></li>
-        <li><a href="/Contrafarm-mp-/seller_home/seller_shope/seller_shope/myshop.html">MY SHOP</a></li>
+        <li><a href="../index.html">HOME</a></li>
+        <li><a href="../Seller Page of vegetables/Firstpage.html">ADD & MANAGE PRODUCTS</a></li>
+        <li><a href="../show_request/show_contract.html">VIEW REQUESTS</a></li>
+        <li><a href="../contracts/seller_contract.html">CONTRACTS</a></li>
+        <li><a href="../contact_us/contact.html">CONTACT</a></li>
+        <li><a href="#" onclick="AgriConnect.logout(); return false;" style="color:#ff6b6b;"><i class="ri-logout-box-r-line"></i> LOGOUT</a></li>
       </ul>
       <div class="nav__btns">
-        <button class="btn"><i class="ri-search-line"></i></button>
-        <button class="btn"><i class="ri-shopping-bag-line"></i></button>
+        <button class="btn" title="Search"><i class="ri-search-line"></i></button>
       </div>
     </nav>
     <div class="container">
@@ -164,6 +164,20 @@
     </div>
     
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../js/app-engine.js"></script>
+    <script>
+      // Auth Guard
+      const currentSeller = AgriConnect.requireAuth('seller');
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const sellBtn = document.querySelector('.container__btn .btn');
+        if (sellBtn) {
+          sellBtn.addEventListener('click', function() {
+            window.location.href = '../Seller Page of vegetables/Firstpage.html';
+          });
+        }
+      });
+    </script>
     <script src="seller_page.js"></script>
   </body>
 </html>

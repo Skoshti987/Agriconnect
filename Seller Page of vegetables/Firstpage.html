@@ -155,12 +155,12 @@
     <body>
         <header>
             <div class="nav">
-                <a href="/Contrafarm-mp-/seller_home/Seller_page.html">Home</a>
-                <a href="../seller_home/seller_shope/seller_shope/myshop.html">My Shop</a>
+                <a href="../seller_home/Seller_page.html">Home</a>
+                <a href="../show_request/show_contract.html">Requests</a>
+                <a href="../contracts/seller_contract.html">Contracts</a>
                 <a href="Market_trend.html">Market Trend</a>
-                <a href="Profile.html">Profile</a>
                 <a href="../contact_us/contact.html">Support</a>
-                <link rel="First page.css" href="First page.css">
+                <a href="#" onclick="AgriConnect.logout(); return false;" style="color:#ff6b6b;">Logout</a>
             </div>
         </header>
         <div class="vegetables">
@@ -391,17 +391,16 @@
                                 </div>
           </div>
        
-          <button><a href="/Contrafarm-mp-/contracts/seller_contract.html" >View Contract</a></button>
-            <h3 class="right">Your Listed Vegetables</h3>
-            <div id="seller-products"></div>
+          <div style="margin: 30px 0;">
+             <a href="../contracts/seller_contract.html" class="button" style="text-decoration:none; padding:10px 20px; background:#4CAF50; color:white; border-radius:5px;">View Contracts</a>
+             <a href="../show_request/show_contract.html" class="button" style="text-decoration:none; padding:10px 20px; background:#2196F3; color:white; border-radius:5px; margin-left:10px;">View Buyer Requests</a>
+          </div>
+          
+          <h2 class="right" style="margin-top:40px; font-size:24px;">Your Currently Listed Vegetables & Products</h2>
+          <div id="seller-products" style="display:flex; flex-wrap:wrap; justify-center:center; gap:20px; padding:20px;"></div>
        
-     
-       
-       
-        
-            
-        
-        <script src="FirstPage.js" async defer></script>
+        <script src="../js/app-engine.js"></script>
+        <script src="FirstPage.js"></script>
     </div>
     </body>
     <footer>

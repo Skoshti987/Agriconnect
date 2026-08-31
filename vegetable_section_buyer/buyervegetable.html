@@ -12,19 +12,21 @@
   <header>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#">support</a></li>
-        <li><a href="show_request_buyer/show_contract">view requests</a></li>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../buyerHome.html">Buyer Dashboard</a></li>
+        <li><a href="../../show_request_buyer/show_contract.html">My Requests</a></li>
+        <li><a href="../../contracts/buyer_contract.html">My Contracts</a></li>
+        <li><a href="#" onclick="AgriConnect.logout(); return false;" style="color:#ff6b6b;">Logout</a></li>
       </ul>
       <div class="cart">
         <span>🛒</span>
         <span id="cart-count">0</span>
         <div id="cart-dropdown" class="cart-dropdown">
-          <h4>Cart</h4>
+          <h4>Requests Cart</h4>
           <ul id="cart-items">
-            <li>No items in the cart.</li>
+            <li>No items selected.</li>
           </ul>
-          <button id="checkout-btn" onclick="openCheckoutWindow()" disabled>Proceed to Checkout</button>
+          <button id="checkout-btn" onclick="openCheckoutWindow()" disabled>Submit Request(s)</button>
         </div>
       </div>
     </nav>
@@ -32,43 +34,26 @@
 
   <!-- Main Content -->
   <section class="main-content">
-    <h1>Fresh Vegetables</h1>
+    <h1>Available Fresh Products & Vegetables</h1>
+    <p style="text-align:center; color:#555; margin-bottom:20px;">Browse produce directly offered by registered local farmers.</p>
 
-    <div class="vegetable-container">
-      <div class="vegetable-box">
-        <img src="tomato.jpg" alt="Tomato">
-        <h3>Tomato</h3>
-        <p>Price: ₹2.99</p>
-        <p>Quantity: <input type="number" value="1" min="1" id="quantity-tomato"></p>
-        <button onclick="addToCart('Tomato', 2.99, 'quantity-tomato')">Add to Cart</button>
-      </div>
-      <div class="vegetable-box">
-        <img src="cucumber.jpg" alt="Cucumber">
-        <h3>Cucumber</h3>
-        <p>Price: ₹1.99</p>
-        <p>Quantity: <input type="number" value="1" min="1" id="quantity-cucumber"></p>
-        <button onclick="addToCart('Cucumber', 1.99, 'quantity-cucumber')">Add to Cart</button>
-      </div>
-      <div class="vegetable-box">
-        <img src="carrot.jpg" alt="Carrot">
-        <h3>Carrot</h3>
-        <p>Price: ₹1.49</p>
-        <p>Quantity: <input type="number" value="1" min="1" id="quantity-carrot"></p>
-        <button onclick="addToCart('Carrot', 1.49, 'quantity-carrot')">Add to Cart</button>
-      </div>
+    <div class="vegetable-container" id="buyer-catalog-container">
+      <!-- Dynamically rendered from AgriConnect app-engine -->
     </div>
   </section>
 
   <!-- Checkout Modal -->
   <div id="checkout-modal" class="checkout-modal">
     <div class="checkout-content">
-      <h2>Checkout</h2>
+      <h2>Confirm Purchase Request</h2>
       <ul id="checkout-items"></ul>
-      <p>Total: ₹<span id="total-price">0.00</span></p>
-      <button id="make-contract-btn" onclick="makeContract()">finalize request</button>
+      <p>Total Estimated Amount: ₹<span id="total-price">0.00</span></p>
+      <button id="make-contract-btn" onclick="makeContract()">Submit Purchase Request</button>
+      <button onclick="document.getElementById('checkout-modal').style.display='none'" style="background:#888; margin-left:10px;">Cancel</button>
     </div>
   </div>
 
+  <script src="../../js/app-engine.js"></script>
   <script src="buyervegetable.js"></script>
 </body>
 </html>

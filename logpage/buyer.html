@@ -49,29 +49,31 @@
 
         <div class="login-container" id="login">
             <div class="top">
-                <span>Don't have an account? <a href="../buyer_home/buyerHome.html" >Sign in</a></span>
+                <span>Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></span>
                 <header>Login as a buyer</header>
             </div>
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="Username or Email" id="username">
-                <i class="bx bx-user"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" class="input-field" placeholder="Password" id="password">
-                <i class="bx bx-lock-alt"></i>
-            </div>
-            <div class="input-box">
-                <input type="submit" class="submit" value="Sign In" onclick="signIn()">
-            </div>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="login-check">
-                    <label for="login-check"> Remember Me</label>
+            <form id="buyerLoginForm" onsubmit="handleBuyerLogin(event)">
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Username or Email" id="buyerUsername" required>
+                    <i class="bx bx-user"></i>
                 </div>
-                <div class="two">
-                    <label><a href="#">Forgot password?</a></label>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password" id="buyerPassword" required>
+                    <i class="bx bx-lock-alt"></i>
                 </div>
-            </div>
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Sign In">
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Forgot password?</a></label>
+                    </div>
+                </div>
+            </form>
         </div>
 
 
@@ -82,62 +84,65 @@
                 <span>Have an account? <a href="#" onclick="showLogin()">Login</a></span>
                 <header>Sign Up as a buyer</header>
             </div>
-            <div class="two-forms">
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Firstname">
-                    <i class="bx bx-user"></i>
+            <form id="buyerRegisterForm" onsubmit="handleBuyerRegister(event)">
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname" id="bFname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname" id="bLname" required>
+                        <i class="bx bx-user"></i>
+                    </div>
                 </div>
                 <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Lastname">
-                    <i class="bx bx-user"></i>
+                    <input type="email" class="input-field" placeholder="Email" id="bEmail" required>
+                    <i class="bx bx-envelope"></i>
                 </div>
-            </div>
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="Email">
-                <i class="bx bx-envelope"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" class="input-field" placeholder="Password">
-                <i class="bx bx-lock-alt"></i>
-            </div>
-
-            <!-- Location input field -->
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="Location">
-                <i class="bx bx-map"></i>
-            </div>
-
-            <!-- Radio buttons for Individual Buyer / Mass Buyer -->
-            <div class="input-box">
-                <label for="individualBuyer">
-                    <input type="radio" id="individualBuyer" name="buyerType" value="Individual Buyer"> Individual Buyer
-                </label>
-                <label for="massBuyer">
-                    <input type="radio" id="massBuyer" name="buyerType" value="Mass Buyer"> Mass Buyer
-                </label>
-            </div>
-
-            <div class="input-box">
-                <input type="submit" class="submit" value="Register" >
-            </div>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="register-check">
-                    <label for="register-check"> Remember Me</label>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password" id="bPassword" required>
+                    <i class="bx bx-lock-alt"></i>
                 </div>
-                <div class="two">
-                    <label><a href="#">Terms & conditions</a></label>
-                </div>
-            </div>
 
-            <!-- Sign In button at the bottom of the Sign Up form -->
-            <div class="input-box">
-                <button class="btn" onclick="showLogin()">Sign In</button>
-            </div>
+                <!-- Location input field -->
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Location" id="bLocation" required>
+                    <i class="bx bx-map"></i>
+                </div>
+
+                <!-- Radio buttons for Individual Buyer / Mass Buyer -->
+                <div class="input-box" style="display:flex; justify-content:space-around; align-items:center; color:white; padding:10px 0;">
+                    <label for="individualBuyer">
+                        <input type="radio" id="individualBuyer" name="buyerType" value="Individual Buyer" checked> Individual Buyer
+                    </label>
+                    <label for="massBuyer">
+                        <input type="radio" id="massBuyer" name="buyerType" value="Mass Buyer"> Mass Buyer
+                    </label>
+                </div>
+
+                <div class="input-box">
+                    <input type="submit" class="submit" value="Register">
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Terms & conditions</a></label>
+                    </div>
+                </div>
+
+                <!-- Sign In button at the bottom of the Sign Up form -->
+                <div class="input-box">
+                    <button type="button" class="btn" onclick="showLogin()">Sign In</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>   
 
+<script src="../js/app-engine.js"></script>
 <script>
    function myMenuFunction() {
        var i = document.getElementById("navMenu");
@@ -171,17 +176,44 @@
        y.style.opacity = 1;
    }
 
-   // Function to handle the Sign In button click
-   function signIn() {
-       var username = document.getElementById("username").value;
-       var password = document.getElementById("password").value;
+   function handleBuyerLogin(event) {
+       event.preventDefault();
+       var username = document.getElementById("buyerUsername").value.trim();
+       var password = document.getElementById("buyerPassword").value.trim();
 
-       // Basic validation (you can expand this with actual login validation logic)
-       if (username && password) {
-           // Redirect to the next page (update the URL to your desired next page)
+       var res = AgriConnect.loginUser(username, password, "buyer");
+       if (res.success) {
            window.location.href = "../buyer_home/buyerHome.html";
        } else {
-           alert("Please enter both username and password.");
+           alert(res.message);
+       }
+   }
+
+   function handleBuyerRegister(event) {
+       event.preventDefault();
+       var fname = document.getElementById("bFname").value.trim();
+       var lname = document.getElementById("bLname").value.trim();
+       var email = document.getElementById("bEmail").value.trim();
+       var password = document.getElementById("bPassword").value.trim();
+       var location = document.getElementById("bLocation").value.trim();
+       var selectedType = document.querySelector("input[name='buyerType']:checked");
+       var buyerType = selectedType ? selectedType.value : "Individual Buyer";
+
+       var res = AgriConnect.registerUser({
+           username: email.split('@')[0],
+           email: email,
+           password: password,
+           role: "buyer",
+           name: fname + " " + lname,
+           location: location,
+           buyerType: buyerType
+       });
+
+       if (res.success) {
+           alert("Buyer registration successful! Redirecting to buyer portal...");
+           window.location.href = "../buyer_home/buyerHome.html";
+       } else {
+           alert(res.message);
        }
    }
 </script>
